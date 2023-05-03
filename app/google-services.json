@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "37873037821",
+    "project_id": "novelfolio-41502",
+    "storage_bucket": "novelfolio-41502.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37873037821:android:8511e1464b1019c4b62994",
+        "android_client_info": {
+          "package_name": "com.example.novelfolio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37873037821-uqa7r42nsnf6bmfgnrepsa8bo7mh4kqa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTEQ9GaiIgi_ahvXkIlP0NZecCE7ODDJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37873037821-uqa7r42nsnf6bmfgnrepsa8bo7mh4kqa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
