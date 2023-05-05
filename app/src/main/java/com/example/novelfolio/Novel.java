@@ -4,11 +4,13 @@ public class Novel {
     private String title;
     private int chapters;
     private String author;
+    private int lastpageread;
 
-    public Novel(String title, int chapters, String author){
+    public Novel(String title, int chapters, String author, int lastpageread){
         this.title = title;
         this.chapters = chapters;
         this.author = author;
+        this.lastpageread = lastpageread;
     }
 
     public String getTitle() {
@@ -33,5 +35,13 @@ public class Novel {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public int getLastpageread() {
+        return lastpageread;
+    }
+
+    public void setLastpageread(int lastpageread) {
+        this.lastpageread = lastpageread;
     }
 }
