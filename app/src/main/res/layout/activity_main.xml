@@ -1,7 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- TabLayout with 2 tabs -->
+    <com.google.android.material.tabs.TabLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:id="@+id/tab_layout">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_item_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tab 1"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_item_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tab 2"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <!-- Search bar and menu -->
+
+
+
+    <!-- Bottom navigation bar with 3 items -->
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_navigation_menu"/>
+
+</RelativeLayout>
