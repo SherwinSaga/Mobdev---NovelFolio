@@ -1,33 +1,45 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <!-- TabLayout with 2 tabs -->
     <com.google.android.material.tabs.TabLayout
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:id="@+id/tab_layout">
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_item_1"
+            android:id="@+id/Favorites"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tab 1"/>
+            android:text="Favorites"/>
 
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tab_item_2"
+            android:id="@+id/Notes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tab 2"/>
+            android:text="Notes"/>
 
     </com.google.android.material.tabs.TabLayout>
 
     <!-- Search bar and menu -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
     <!-- Bottom navigation bar with 3 items -->
 
@@ -38,4 +50,4 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_navigation_menu"/>
 
-</RelativeLayout>
+</LinearLayout>

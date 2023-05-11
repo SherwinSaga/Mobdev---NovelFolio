@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bot_home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bot_library"
+        android:icon="@drawable/baseline_library"
+        android:title="Library"
+        app:showAsAction="ifRoom"/>
+
+
+    <item
+        android:id="@+id/bot_forum"
+        android:icon="@drawable/baseline_forum"
+        android:title="Forum"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/bot_more"
+        android:icon="@drawable/baseline_more"
+        android:title="More"
+        app:showAsAction="ifRoom"/>
+</menu>
