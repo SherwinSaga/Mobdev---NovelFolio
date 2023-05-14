@@ -1,4 +1,4 @@
-package com.example.novelfolio;
+package com.example.novelfolio.Fragment;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.novelfolio.R;
 
 
 public class FragmentLibrary extends Fragment {
