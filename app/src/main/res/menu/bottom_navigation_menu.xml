@@ -7,12 +7,14 @@
         android:id="@+id/bot_home"
         android:icon="@drawable/baseline_home_24"
         android:title="Home"
+        app:iconTint="@color/black"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/bot_library"
         android:icon="@drawable/baseline_library"
         android:title="Library"
+        app:iconTint="@color/black"
         app:showAsAction="ifRoom"/>
 
 
@@ -20,11 +22,13 @@
         android:id="@+id/bot_forum"
         android:icon="@drawable/baseline_forum"
         android:title="Forum"
+        app:iconTint="@color/black"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/bot_more"
         android:icon="@drawable/baseline_more"
         android:title="More"
+        app:iconTint="@color/black"
         app:showAsAction="ifRoom"/>
 </menu>

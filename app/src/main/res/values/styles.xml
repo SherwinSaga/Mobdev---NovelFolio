@@ -52,7 +52,9 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="AppTheme"></style>
+    <style name="AppTheme">
+        <item name="android:navigationBarColor">@color/LighterThanGreen</item>
+    </style>
 
     <style name="Button"></style>
 
