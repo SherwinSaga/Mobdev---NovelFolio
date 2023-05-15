@@ -14,16 +14,14 @@
         android:theme="@style/Theme.NovelFolio"
         tools:targetApi="31">
         <activity
+            android:name=".NovelContent"
+            android:exported="false" />
+        <activity
             android:name=".Register"
             android:exported="false" />
         <activity
             android:name=".MainScreen"
             android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="@string/title_activity_main2"
-            android:theme="@style/Theme.NovelFolio.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
