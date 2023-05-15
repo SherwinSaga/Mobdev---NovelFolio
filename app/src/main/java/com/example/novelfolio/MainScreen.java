@@ -79,8 +79,9 @@ public class MainScreen extends AppCompatActivity {
                 viewPager2.setVisibility(View.GONE);
                 switch(item.getItemId()){
                     case R.id.bot_home:
-                        //viewPager2.setVisibility(View.VISIBLE);
+
                         tabLayout.setVisibility(View.VISIBLE);
+                        tabLayout.selectTab(tabLayout.getTabAt(0)); // kani na line // this shit works
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new FragmentHome()).commit();
                         return true;
 
