@@ -3,31 +3,27 @@ package com.example.novelfolio;
 import java.util.ArrayList;
 
 public class User {
-    private String username;
-    private ArrayList<Novel> userfavoritelist;
+    private String name;
+    private String email;
 
-    public User(String username){
-        this.username = username;
-        userfavoritelist = new ArrayList<>();
+    public User( String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
-    public void setUsername(String username){
-        this.username = username;
+    public String getName() {
+        return name;
     }
 
-    public String getUsername(){
-        return username;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void addToFavoriteList(Novel n){
-        userfavoritelist.add(n);
+    public String getEmail() {
+        return email;
     }
 
-    public ArrayList<Novel> getFavoriteslist() {
-        return userfavoritelist;
-    }
-
-    public boolean removefromFavorite(Novel n){
-        return userfavoritelist.remove(n);
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
