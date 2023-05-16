@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainScreen"
     android:orientation="vertical"
-    android:background="@color/beige">
+    >
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabTextColor="@color/black">
+        >
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/Favorites"
@@ -47,7 +47,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/LighterThanGreen"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_navigation_menu"/>
 

@@ -2,18 +2,22 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--GI SWAP NAKO ANG TITLE SA MENU HOME UG MENU LIBRARY
+        bot home title na Home into Library
+        bot library title na library into Browse
+    -->
 
     <item
         android:id="@+id/bot_home"
         android:icon="@drawable/baseline_home_24"
-        android:title="Home"
+        android:title="Library"
         app:iconTint="@color/black"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/bot_library"
         android:icon="@drawable/baseline_library"
-        android:title="Library"
+        android:title="Browse"
         app:iconTint="@color/black"
         app:showAsAction="ifRoom"/>
 
