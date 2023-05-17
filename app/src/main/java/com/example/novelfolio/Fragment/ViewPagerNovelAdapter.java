@@ -1,5 +1,7 @@
 package com.example.novelfolio.Fragment;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -16,8 +18,15 @@ public class ViewPagerNovelAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch(position){
             case 0: return new ContentFragment();
-            case 1: return new NovelNotesFragment();
-            default: return new ContentFragment();
+            case 1:
+                Bundle bundle = new Bundle();
+                bundle.putString("test", "test");
+                NovelNotesFragment x = new NovelNotesFragment();
+                x.setArguments(bundle);
+                return x;
+
+            default:
+                return new ContentFragment();
         }
     }
 

@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.NovelNotesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listNovelNotes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Fragment Novel Notes" />
+        android:layout_height="629dp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/createNovelNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Novel notes" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="123dp"
+        android:layout_marginTop="645dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginBottom="38dp"
+        android:text="Create A Note" />
 
-</FrameLayout>
+</RelativeLayout>

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, MainScreen.class);
                 startActivity(intent);
-                mAuth.signInWithEmailAndPassword(email.getText().toString(), password.getText().toString())
+                mAuth.signInWithEmailAndPassword("jhudzkymunoz4@gmail.com", "123456")
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {

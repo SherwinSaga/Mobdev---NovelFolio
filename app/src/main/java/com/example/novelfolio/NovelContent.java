@@ -2,7 +2,6 @@ package com.example.novelfolio;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +23,7 @@ public class NovelContent extends AppCompatActivity {
     private TextView chapterContent;
     private Button prevButton;
     private Button nextButton;
+    private Button contentButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,20 @@ public class NovelContent extends AppCompatActivity {
         prevButton = findViewById(R.id.prevButton);
         nextButton = findViewById(R.id.nextButton);
 
+        contentButton = findViewById(R.id.btnContents);
+
         String novelDocId = getIntent().getStringExtra("novelDocId");
         int currChapterNum = getIntent().getIntExtra("currentChapterNum", 1);
+
+        contentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NovelContent.this, NovelContents.class);
+
+                startActivity(intent);
+            }
+        });
+
         if (currChapterNum <= 1) {
             prevButton.setEnabled(false);
             prevButton.setAlpha(0.5f);
