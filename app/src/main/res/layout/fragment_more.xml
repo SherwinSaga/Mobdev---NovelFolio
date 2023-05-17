@@ -44,6 +44,7 @@
 
                 <TextView
                     style="@style/viewParent.headerText"
+                    android:id="@+id/edit_details"
                     android:text="Edit personal details"
                     android:textSize="16sp"
                     android:textColor="#5D5C5C"
@@ -75,9 +76,11 @@
 
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
+                android:id="@+id/tfThemes"
                 android:drawableLeft="@drawable/ic_theme1"
                 android:layout_marginTop="12dp"
-                android:text="Change Theme" />
+                android:text="Change Theme"
+                />
 
             <TextView
                 style="@style/viewParent.headerText.settingsMiniTitle"
@@ -88,6 +91,16 @@
                 android:checked="true"
                 android:drawableLeft="@drawable/ic_notifications"
                 android:text="Notifications" />
+
+            <TextView
+                style="@style/viewParent.headerText.settingsMiniTitle"
+                android:text="Library"/>
+
+            <TextView
+                style="@style/viewParent.headerText.settingsTextIcon"
+                android:drawableLeft="@drawable/ic_logout"
+                android:text="BackUp and Restore"
+                android:id="@+id/tfBackUP"/>
 
             <TextView
                 style="@style/viewParent.headerText.settingsMiniTitle"
@@ -104,10 +117,14 @@
                 android:text="Logout" />
 
 
+
+
+
             <TextView
                 style="@style/viewParent.headerText.settingsMiniTitle"
                 android:text="App ver 1.0"
-                android:textAlignment="center"/>
+                android:textAlignment="center"
+                />
 
         </LinearLayout>
 

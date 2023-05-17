@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.FragmentAccountDetails">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            style="@style/viewParent.headerText"
+            android:text="Account Settings" />
+
+        <TextView
+            android:id="@+id/tfEMAIL"
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:drawableLeft="@drawable/ic_edit_profile"
+            android:text="Change E-email" />
+
+        <TextView
+            style="@style/viewParent.headerText.settingsTextIcon"
+            android:id="@+id/tfEditPassword"
+            android:drawableLeft="@drawable/ic_edit_password"
+            android:layout_marginTop="12dp"
+            android:text="Change Password"
+            />
+
+
+    </LinearLayout>
+
+</FrameLayout>
