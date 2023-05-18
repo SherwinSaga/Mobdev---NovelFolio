@@ -38,15 +38,15 @@ public class MainActivity extends AppCompatActivity {
         buttonLOGIN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MainScreen.class);
-                startActivity(intent);
-                mAuth.signInWithEmailAndPassword("jhudzkymunoz4@gmail.com", "123456")
+                mAuth.signInWithEmailAndPassword("test@gmail.com", "123123")
                         .addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign-in successful
                                     Toast.makeText(MainActivity.this, "Sign-in successful", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(MainActivity.this, MainScreen.class);
+                                    startActivity(intent);
                                     // Proceed with your desired logic
                                 } else {
                                     // Sign-in failed

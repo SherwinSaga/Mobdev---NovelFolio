@@ -8,7 +8,10 @@
         <entry key="app/src/main/res/layout/activity_novel_contents.xml" value="0.8185483870967742" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.1" />
         <entry key="app/src/main/res/layout/chapter_card.xml" value="0.42469940185546873" />
+        <entry key="app/src/main/res/layout/fragment_change_email.xml" value="0.19882246376811594" />
+        <entry key="app/src/main/res/layout/fragment_change_password.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/layout/fragment_content.xml" value="0.14764492753623187" />
+        <entry key="app/src/main/res/layout/fragment_edit_account_details.xml" value="0.19882246376811594" />
         <entry key="app/src/main/res/layout/fragment_favorites_tab.xml" value="0.14764492753623187" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14764492753623187" />
         <entry key="app/src/main/res/layout/fragment_library.xml" value="0.13269927536231885" />

@@ -17,7 +17,7 @@
             android:text="Change Email" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputUsername"
+            android:id="@+id/inputChangeEmail"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
@@ -30,7 +30,7 @@
 
 
         <Button
-            android:id="@+id/btnSave"
+            android:id="@+id/btnChangeEmailSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="260dp"
