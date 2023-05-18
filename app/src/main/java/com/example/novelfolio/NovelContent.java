@@ -43,11 +43,30 @@ public class NovelContent extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(NovelContent.this, NovelContents.class);
-
+                intent.putExtra("novelDocId", novelDocId);
+                intent.putExtra("currChapterNum", currChapterNum);
                 startActivity(intent);
             }
         });
 
+        prevButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NovelContent.this, NovelContent.class);
+                intent.putExtra("novelDocId", novelDocId);
+                intent.putExtra("currentChapterNum",currChapterNum - 1);
+                startActivity(intent);
+            }
+        });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NovelContent.this, NovelContent.class);
+                intent.putExtra("novelDocId", novelDocId);
+                intent.putExtra("currentChapterNum",currChapterNum + 1);
+                startActivity(intent);
+            }
+        });
         if (currChapterNum <= 1) {
             prevButton.setEnabled(false);
             prevButton.setAlpha(0.5f);
@@ -83,17 +102,5 @@ public class NovelContent extends AppCompatActivity {
                 }
             }
         });
-    }
-    public void nextNovel(View v) {
-        Intent intent = new Intent(NovelContent.this, NovelContent.class);
-        intent.putExtra("novelDocId", "KgpW8IuHIbnn5hm17cyg");
-        intent.putExtra("currentChapterNum",2 );
-        startActivity(intent);
-    }
-    public void prevNovel(View v) {
-        Intent intent = new Intent(NovelContent.this, NovelContent.class);
-        intent.putExtra("novelDocId", "KgpW8IuHIbnn5hm17cyg");
-        intent.putExtra("currentChapterNum",1 );
-        startActivity(intent);
     }
 }

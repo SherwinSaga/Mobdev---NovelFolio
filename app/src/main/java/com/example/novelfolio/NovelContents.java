@@ -5,17 +5,16 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.FrameLayout;
 
 import com.example.novelfolio.Fragment.ViewPagerNovelAdapter;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
+
+import java.util.HashMap;
 
 public class NovelContents extends AppCompatActivity {
 
     TabLayout tabLayout;
     ViewPager2 viewPager2;
-    FrameLayout frameLayout;
     ViewPagerNovelAdapter viewPagerNovelAdapter;
 
 
@@ -26,15 +25,16 @@ public class NovelContents extends AppCompatActivity {
 
         tabLayout = findViewById(R.id.tab_layout);
         viewPager2 = findViewById(R.id.viewPager);
-        viewPagerNovelAdapter = new ViewPagerNovelAdapter(this);
+
+        HashMap<String, Object> arguments = new HashMap<>();
+        arguments.put("novelDocId", getIntent().getStringExtra("novelDocId"));
+        viewPagerNovelAdapter = new ViewPagerNovelAdapter(this, arguments);
         viewPager2.setAdapter(viewPagerNovelAdapter);
-        frameLayout = findViewById(R.id.frameLayout);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager2.setVisibility(View.VISIBLE);
-                frameLayout.setVisibility(View.GONE);
                 viewPager2.setCurrentItem(tab.getPosition());
             }
 
@@ -46,7 +46,6 @@ public class NovelContents extends AppCompatActivity {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
                 viewPager2.setVisibility(View.VISIBLE);
-                frameLayout.setVisibility(View.GONE);
 
             }
         });
