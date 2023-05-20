@@ -24,8 +24,8 @@
 
     <item
         android:id="@+id/bot_forum"
-        android:icon="@drawable/baseline_forum"
-        android:title="Forum"
+        android:icon="@drawable/ic_notif"
+        android:title="Updates"
         app:iconTint="@color/black"
         app:showAsAction="ifRoom"/>
 

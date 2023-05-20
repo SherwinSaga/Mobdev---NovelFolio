@@ -1,6 +1,7 @@
 package com.example.novelfolio.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.example.novelfolio.Ei_port;
 import com.example.novelfolio.R;
 
 public class FragmentMore extends Fragment {
@@ -70,12 +72,16 @@ public class FragmentMore extends Fragment {
         Backup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 Fragment FragmentEIport = new FragmentExportImport();
                 FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frameLayout, FragmentEIport);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+                */
+                Intent intent4 = new Intent(getActivity(), Ei_port.class);
+                startActivity(intent4);
             }
         });
 

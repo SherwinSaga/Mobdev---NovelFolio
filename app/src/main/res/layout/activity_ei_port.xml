@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.FragmentExportImport">
+    tools:context=".Ei_port">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,20 +17,26 @@
             android:text="Export and Import" />
 
         <TextView
-            android:id="@+id/tfExport"
+            android:id="@+id/tfExport1"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_languages"
             android:text="Export" />
 
         <TextView
-            android:id="@+id/tfImport"
+            android:id="@+id/tfImport1"
             style="@style/viewParent.headerText.settingsTextIcon"
             android:drawableLeft="@drawable/ic_logout"
             android:text="Import" />
 
+        <!--        TEST para import
+        <TextView
+            android:id="@+id/testing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+           -->
 
     </LinearLayout>
 
-
-
-</FrameLayout>
+</LinearLayout>
