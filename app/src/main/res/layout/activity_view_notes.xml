@@ -19,12 +19,11 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <TextView
-                android:id="@+id/viewTitle"
-                android:layout_height="30dp"
+                android:id="@+id/viewNoteTitle"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/newsMoreTextSize"
+                android:layout_height="match_parent"
                 android:background="@color/LighterThanGreen"
-                />
+                android:textSize="@dimen/newsMoreTextSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -34,7 +33,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <TextView
-                android:id="@+id/viewNote"
+                android:id="@+id/viewNoteContent"
                 android:background="@color/LighterThanGreen"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:layout_height="600dp"

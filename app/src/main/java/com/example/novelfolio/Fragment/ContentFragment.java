@@ -38,10 +38,12 @@ public class ContentFragment extends Fragment implements ChapterAdapter.ChapterC
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_content, container, false);
+        Bundle bundle = getArguments();
 
+        String novelDocId = bundle.getString("novelDocId");
         recyclerView = view.findViewById(R.id.chaptersList);
 
-        getChapters();
+        getChapters(novelDocId);
         return view;
     }
 
@@ -53,8 +55,8 @@ public class ContentFragment extends Fragment implements ChapterAdapter.ChapterC
         startActivity(intent);
     }
 
-    public void getChapters() {
-        CollectionReference dbChapters = db.collection("novels").document("KgpW8IuHIbnn5hm17cyg").collection("chapters");
+    public void getChapters(String novelDocId) {
+        CollectionReference dbChapters = db.collection("novels").document(novelDocId).collection("chapters");
         dbChapters.orderBy("chapterNumber", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -63,7 +65,7 @@ public class ContentFragment extends Fragment implements ChapterAdapter.ChapterC
                     List<Chapter> data = task.getResult().toObjects(Chapter.class);
                     chapters.addAll(data);
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    ChapterAdapter adapter = new ChapterAdapter(getContext(), chapters, ContentFragment.this);
+                    ChapterAdapter adapter = new ChapterAdapter(getContext(), chapters,novelDocId, ContentFragment.this);
                     recyclerView.setAdapter(adapter);
                 } else {
                     Log.w("MainAct", "Error getting documents.", task.getException());

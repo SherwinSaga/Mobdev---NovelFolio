@@ -2,24 +2,21 @@ package com.example.novelfolio;
 
 public class Novel {
     private String title;
-    private int chapters;
     private String authorName;
     private String imgUrl;
     private String docId;
     private int currentChapterNumber;
 
-    public Novel(String title, int chapters, String authorName, String imgUrl, String docId){
+    public Novel(String title, String authorName, String imgUrl, String docId){
         this.title = title;
-        this.chapters = chapters;
         this.authorName = authorName;
         this.imgUrl = imgUrl;
         this.docId = docId;
         this.currentChapterNumber = 1;
     }
     public Novel(){this.currentChapterNumber = 1;};
-    public Novel(String title, int chapters, String authorName, String imgUrl, String docId, int currentChapterNumber){
+    public Novel(String title, String authorName, String imgUrl, String docId, int currentChapterNumber){
         this.title = title;
-        this.chapters = chapters;
         this.authorName = authorName;
         this.imgUrl = imgUrl;
         this.docId = docId;
@@ -33,14 +30,6 @@ public class Novel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public int getChapters() {
-        return chapters;
-    }
-
-    public void setChapters(int chapters) {
-        this.chapters = chapters;
     }
 
     public String getAuthorName() {

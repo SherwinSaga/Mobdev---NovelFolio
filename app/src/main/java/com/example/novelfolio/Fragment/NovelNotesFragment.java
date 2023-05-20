@@ -1,5 +1,6 @@
 package com.example.novelfolio.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,9 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.novelfolio.AddNoteTemplate;
 import com.example.novelfolio.Note;
 import com.example.novelfolio.NoteAdapter;
 import com.example.novelfolio.R;
+import com.example.novelfolio.ViewNotes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -21,17 +25,24 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
-public class NovelNotesFragment extends Fragment {
+public class NovelNotesFragment extends Fragment implements NoteAdapter.NoteClickInterface {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     RecyclerView recyclerView;
     ArrayList<Note> notes;
+
+    @Override
+    public void onNoteClick(String docId) {
+        Intent intent = new Intent(getContext(), ViewNotes.class);
+        intent.putExtra("docId", docId);
+        startActivity(intent);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,7 +57,9 @@ public class NovelNotesFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNovelNote(novelDocId);
+                Intent intent = new Intent(getActivity(), AddNoteTemplate.class);
+                intent.putExtra("novelDocId", novelDocId);
+                startActivity(intent);
             }
         });
 
@@ -54,12 +67,6 @@ public class NovelNotesFragment extends Fragment {
         return view;
     }
 
-    public void createNovelNote(String novelDocId) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
-        Note note = new Note("Background", "lorem ipsum", novelDocId);
-        db.collection("users").document(authUser.getUid()).collection("notes").add(note);
-    }
 
     public void getNovelNotes(String novelDocId) {
         FirebaseUser currentUser = mAuth.getCurrentUser();
@@ -69,10 +76,12 @@ public class NovelNotesFragment extends Fragment {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     notes = new ArrayList<>();
-                    List<Note> data = task.getResult().toObjects(Note.class);
-                    notes.addAll(data);
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        Note note = new Note(document.getString("title"), document.getString("content"), document.getString("novelId"), document.getId());
+                        notes.add(note);
+                    }
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-                    NoteAdapter adapter = new NoteAdapter(getContext(), notes);
+                    NoteAdapter adapter = new NoteAdapter(getContext(), notes, NovelNotesFragment.this);
                     recyclerView.setAdapter(adapter);
                 } else {
                     Log.w("MainAct", "Error getting documents.", task.getException());

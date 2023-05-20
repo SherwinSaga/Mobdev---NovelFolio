@@ -23,13 +23,16 @@ public class NovelContents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novel_contents);
 
-        tabLayout = findViewById(R.id.tab_layout);
+        tabLayout = findViewById(R.id.novelContentTabLayout);
         viewPager2 = findViewById(R.id.viewPager);
 
         HashMap<String, Object> arguments = new HashMap<>();
         arguments.put("novelDocId", getIntent().getStringExtra("novelDocId"));
+        int tabNum = getIntent().getIntExtra("tabNum", 0);
         viewPagerNovelAdapter = new ViewPagerNovelAdapter(this, arguments);
         viewPager2.setAdapter(viewPagerNovelAdapter);
+        viewPager2.setCurrentItem(tabNum);
+        tabLayout.getTabAt(tabNum).select();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -49,19 +52,5 @@ public class NovelContents extends AppCompatActivity {
 
             }
         });
-
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                switch(position){
-                    case 0:
-                    case 1:
-                        tabLayout.getTabAt(position).select();
-                }
-                super.onPageSelected(position);
-            }
-        });
-
-
     }
 }

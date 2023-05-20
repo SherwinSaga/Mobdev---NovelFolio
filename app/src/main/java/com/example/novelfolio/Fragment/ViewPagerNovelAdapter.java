@@ -20,17 +20,17 @@ public class ViewPagerNovelAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("novelDocId", arguments.get("novelDocId").toString());
         switch(position){
-            case 0: return new ContentFragment();
             case 1:
-                Bundle bundle = new Bundle();
-                bundle.putString("novelDocId", arguments.get("novelDocId").toString());
                 NovelNotesFragment x = new NovelNotesFragment();
                 x.setArguments(bundle);
                 return x;
-
             default:
-                return new ContentFragment();
+                ContentFragment y = new ContentFragment();
+                y.setArguments(bundle);
+                return y;
         }
     }
 

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
-                android:id="@+id/editTitle"
+                android:id="@+id/addNoteTitle"
                 style="@style/modifiedEditText"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:backgroundTint="@color/LighterThanGreen"
@@ -36,7 +36,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <EditText
-                android:id="@+id/editNote"
+                android:id="@+id/addNoteContent"
                 android:backgroundTint="@color/LighterThanGreen"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:layout_height="500dp"
@@ -46,7 +46,7 @@
 
 
         <Button
-            android:id="@+id/btnsavenote"
+            android:id="@+id/btnSaveNote"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="260dp"

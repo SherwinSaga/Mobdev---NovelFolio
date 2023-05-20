@@ -16,15 +16,13 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
     Context context;
     List<Chapter> chapters;
     ChapterClickInterface chapterClickInterface;
+    String novelDocId;
 
-    public ChapterAdapter(Context context, ArrayList<Chapter> chapters, ChapterClickInterface chapterClickInterface) {
+    public ChapterAdapter(Context context, ArrayList<Chapter> chapters, String novelDocId, ChapterClickInterface chapterClickInterface) {
         this.context = context;
         this.chapters = chapters;
         this.chapterClickInterface = chapterClickInterface;
-    }
-
-    public void onChapterClick() {
-
+        this.novelDocId = novelDocId;
     }
 
     @NonNull
@@ -41,7 +39,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                chapterClickInterface.onChapterClick("KgpW8IuHIbnn5hm17cyg", chapters.get(position).getChapterNumber());
+                chapterClickInterface.onChapterClick(novelDocId, chapters.get(position).getChapterNumber());
             }
         });
     }

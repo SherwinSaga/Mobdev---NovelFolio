@@ -27,10 +27,6 @@ public class NovelCardAdapter extends RecyclerView.Adapter<NovelCardAdapter.Nove
         this.noveCardClickInterface = noveCardClickInterface;
     }
 
-    public void onChapterClick() {
-
-    }
-
     @NonNull
     @Override
     public NovelCardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

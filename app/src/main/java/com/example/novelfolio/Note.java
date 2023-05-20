@@ -6,13 +6,22 @@ public class Note implements Serializable {
     private String title;
     private String content;
     private String novelId;
+    private String docId;
 
     public Note(String title, String content, String novelId) {
         this.title = title;
         this.content = content;
         this.novelId = novelId;
     }
+    public Note(String title, String content, String novelId, String docId) {
+        this.title = title;
+        this.content = content;
+        this.novelId = novelId;
+        this.docId = docId;
+    }
+
     public Note(){};
+
     public String getTitle() {
         return title;
     }
@@ -36,4 +45,6 @@ public class Note implements Serializable {
     public void setNovelId(String novelId) {
         this.novelId = novelId;
     }
+
+    public String getDocId() {return docId;}
 }
