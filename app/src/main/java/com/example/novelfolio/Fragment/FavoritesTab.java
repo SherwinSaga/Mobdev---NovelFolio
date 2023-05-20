@@ -8,14 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.novelfolio.Note;
-import com.example.novelfolio.NoteAdapter;
 import com.example.novelfolio.Novel;
 import com.example.novelfolio.NovelCardAdapter;
 import com.example.novelfolio.NovelContent;
@@ -31,7 +28,6 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 
 public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCardClickInterface {
@@ -50,9 +46,9 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
         return view;
     }
 
-    public void onNovelClick(String NovelDocId, int chapterNum) {
+    public void onNovelClick(String novelDocId, int chapterNum) {
         Intent intent = new Intent(getActivity(), NovelContent.class);
-        intent.putExtra("novelDocId", NovelDocId);
+        intent.putExtra("novelDocId", novelDocId);
         intent.putExtra("currentChapterNum", chapterNum);
         startActivity(intent);
     }
@@ -72,6 +68,7 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
                         favNovels.put("novelDocId", novelDocId);
                         favNovels.put(novelDocId + " currChapterNum", document.getLong("currChapterNum").intValue());
                         novelDocIds.add(novelDocId);
+                        Toast.makeText(getContext(), Integer.toString(novelDocIds.size()), Toast.LENGTH_SHORT).show();
                     }
 
                     if (!novelDocIds.isEmpty()) {
@@ -81,11 +78,10 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (task.isSuccessful()) {
                                     novels = new ArrayList<>();
-                                    Novel novel = new Novel();
                                     for (QueryDocumentSnapshot document : task.getResult()) {
-                                        novel = new Novel(document.getString("title"), document.getString("authorName"), document.getString("imgUrl"), document.getId(), Integer.parseInt(favNovels.get(document.getId() + " currChapterNum").toString()));
+                                        Novel novel = new Novel(document.getString("title"), document.getString("authorName"), document.getString("imgUrl"), document.getId(), Integer.parseInt(favNovels.get(document.getId() + " currChapterNum").toString()));
+                                        novels.add(novel);
                                     }
-                                    novels.add(novel);
                                     recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
                                     NovelCardAdapter adapter = new NovelCardAdapter(getContext(), novels, FavoritesTab.this);
                                     recyclerView.setAdapter(adapter);

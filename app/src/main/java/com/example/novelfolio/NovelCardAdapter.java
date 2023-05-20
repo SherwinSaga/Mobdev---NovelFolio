@@ -19,12 +19,12 @@ import java.util.List;
 public class NovelCardAdapter extends RecyclerView.Adapter<NovelCardAdapter.NovelCardViewHolder> {
     Context context;
     List<Novel> novels;
-    NovelCardClickInterface noveCardClickInterface;
+    NovelCardClickInterface novelCardClickInterface;
 
-    public NovelCardAdapter(Context context, ArrayList<Novel> novels, NovelCardClickInterface noveCardClickInterface) {
+    public NovelCardAdapter(Context context, ArrayList<Novel> novels, NovelCardClickInterface novelCardClickInterface) {
         this.context = context;
         this.novels = novels;
-        this.noveCardClickInterface = noveCardClickInterface;
+        this.novelCardClickInterface = novelCardClickInterface;
     }
 
     @NonNull
@@ -44,7 +44,7 @@ public class NovelCardAdapter extends RecyclerView.Adapter<NovelCardAdapter.Nove
         holder.novelCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                noveCardClickInterface.onNovelClick(novel.getDocId(), novel.getCurrentChapterNumber());
+                novelCardClickInterface.onNovelClick(novel.getDocId(), novel.getCurrentChapterNumber());
             }
         });
     }
@@ -67,7 +67,7 @@ public class NovelCardAdapter extends RecyclerView.Adapter<NovelCardAdapter.Nove
     }
 
     public interface NovelCardClickInterface {
-        public void onNovelClick(String NovelDocId, int chapterNum);
+        public void onNovelClick(String novelDocId, int chapterNum);
     }
 
 }

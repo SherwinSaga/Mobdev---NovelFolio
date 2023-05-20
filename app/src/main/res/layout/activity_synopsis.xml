@@ -23,7 +23,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/novelCardCoverImg"
+                    android:id="@+id/novelDetailsCoverImg"
                     android:layout_width="130dp"
                     android:layout_height="180dp"
                     android:scaleType="fitXY"
@@ -36,14 +36,14 @@
                     android:layout_marginStart="16dp">
 
                     <TextView
-                        android:id="@+id/TITLE"
+                        android:id="@+id/novelDetailsTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Title"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/author"
+                        android:id="@+id/novelDetailsAuthor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Author" />
@@ -55,6 +55,7 @@
                         android:orientation="horizontal">
 
                         <ImageButton
+                            android:id="@+id/novelDetailsAddFav"
                             android:src="@drawable/ic_addfav"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
@@ -94,7 +95,7 @@
 
                 <TextView
                     android:layout_marginTop="5dp"
-                    android:id="@+id/synopsis"
+                    android:id="@+id/novelDetailsSynopsis"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"/>
@@ -116,7 +117,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_marginTop="10dp"
-                    android:id="@+id/chaptersList"
+                    android:id="@+id/novelDetailsChaptersList"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
