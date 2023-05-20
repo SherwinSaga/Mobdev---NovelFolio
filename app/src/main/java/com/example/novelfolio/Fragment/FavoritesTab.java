@@ -68,10 +68,9 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
-
-                        String novelDocId = document.getString("novelDocId");
+                        String novelDocId = document.getId();
                         favNovels.put("novelDocId", novelDocId);
-                        favNovels.put(novelDocId + " currChapterNum", document.getString("currChapterNum"));
+                        favNovels.put(novelDocId + " currChapterNum", document.getLong("currChapterNum").intValue());
                         novelDocIds.add(novelDocId);
                     }
 
