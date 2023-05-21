@@ -10,19 +10,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="30dp">
+        android:paddingRight="6dp"
+        android:paddingLeft="6dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/loginViewsMargin">
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="20dp">
 
             <TextView
+                android:textColor="@color/black"
                 android:id="@+id/viewNoteTitle"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/LighterThanGreen"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:background="@drawable/note_color"
                 android:textSize="@dimen/newsMoreTextSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,13 +35,18 @@
             android:id="@+id/note"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/loginViewsMargin">
+            android:layout_marginTop="3dp">
 
             <TextView
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp"
+                android:padding="10dp"
                 android:id="@+id/viewNoteContent"
-                android:background="@color/LighterThanGreen"
+                android:background="@drawable/note_color"
                 android:textSize="@dimen/newsMoreTextSize"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 />
 

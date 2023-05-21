@@ -21,12 +21,12 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
                 android:id="@+id/addNoteTitle"
-                style="@style/modifiedEditText"
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
                 android:textSize="@dimen/newsMoreTextSize"
-                android:backgroundTint="@color/LighterThanGreen"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:hint="Title"/>
+                android:hint="Title"  />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,7 +37,6 @@
 
             <EditText
                 android:id="@+id/addNoteContent"
-                android:backgroundTint="@color/LighterThanGreen"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:layout_height="500dp"
                 android:layout_width="match_parent"/>

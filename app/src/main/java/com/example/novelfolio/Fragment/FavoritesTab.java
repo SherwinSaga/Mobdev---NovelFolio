@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.novelfolio.InFavorite;
 import com.example.novelfolio.Novel;
 import com.example.novelfolio.NovelCardAdapter;
 import com.example.novelfolio.NovelContent;
@@ -47,7 +48,7 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
     }
 
     public void onNovelClick(String novelDocId, int chapterNum) {
-        Intent intent = new Intent(getActivity(), NovelContent.class);
+        Intent intent = new Intent(getActivity(), InFavorite.class);
         intent.putExtra("novelDocId", novelDocId);
         intent.putExtra("currentChapterNum", chapterNum);
         startActivity(intent);

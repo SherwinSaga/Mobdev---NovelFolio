@@ -46,7 +46,7 @@ public class ViewNotes extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        title.setText(document.getString("title").toString());
+                        title.setText("Title : "+document.getString("title").toString());
                         content.setText(document.getString("content").toString());
                     }
                 } else {
