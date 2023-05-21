@@ -72,14 +72,7 @@ public class FragmentMore extends Fragment {
         Backup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                Fragment FragmentEIport = new FragmentExportImport();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, FragmentEIport);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-                */
+
                 Intent intent4 = new Intent(getActivity(), Ei_port.class);
                 startActivity(intent4);
             }
