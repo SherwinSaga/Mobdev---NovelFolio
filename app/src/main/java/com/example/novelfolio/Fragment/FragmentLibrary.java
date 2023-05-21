@@ -14,8 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.novelfolio.Novel;
 import com.example.novelfolio.NovelCardAdapter;
-import com.example.novelfolio.NovelContent;
 import com.example.novelfolio.R;
+import com.example.novelfolio.Synopsis;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -41,9 +41,9 @@ public class FragmentLibrary extends Fragment implements NovelCardAdapter.NovelC
     }
 
     @Override
-    public void onNovelClick(String NovelDocId, int chapterNum) {
-        Intent intent = new Intent(getActivity(), NovelContent.class);
-        intent.putExtra("novelDocId", NovelDocId);
+    public void onNovelClick(String novelDocId, int chapterNum) {
+        Intent intent = new Intent(getActivity(), Synopsis.class);
+        intent.putExtra("novelDocId", novelDocId);
         intent.putExtra("currentChapterNum", chapterNum);
         startActivity(intent);
     }

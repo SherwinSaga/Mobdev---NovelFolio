@@ -59,7 +59,7 @@ public class ChapterAdapter extends RecyclerView.Adapter<ChapterAdapter.ChapterV
     }
 
     public interface ChapterClickInterface {
-        public void onChapterClick(String NovelDocId, int chapterNum);
+        public void onChapterClick(String novelDocId, int chapterNum);
     }
 
 }
