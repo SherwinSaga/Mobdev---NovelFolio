@@ -7,20 +7,16 @@ import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +26,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.novelfolio.Ei_port;
+import com.example.novelfolio.MainActivity;
 import com.example.novelfolio.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class FragmentMore extends Fragment {
 
@@ -60,6 +63,7 @@ public class FragmentMore extends Fragment {
         Backup = view.findViewById(R.id.tfBackUP);
         switcher = view.findViewById(R.id.darkModeSwitch);
         notif = view.findViewById(R.id.switchNotif);
+        TextView logout = view.findViewById(R.id.menuLogout);
 
         nightMode = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES;
 
@@ -70,6 +74,24 @@ public class FragmentMore extends Fragment {
         isON = prefs.getBoolean(NOTIF_SWITCH_STATE, false);
         notif.setChecked(isON);
 
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        TextView name = view.findViewById(R.id.moreUserName);
+        FirebaseFirestore.getInstance().collection("users").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                name.setText(task.getResult().getString("name"));
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Intent intent = new Intent(getActivity(), MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(getContext(), "Successfully Log out.", Toast.LENGTH_SHORT).show();
+            }
+        });
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("My notification", "My notification", NotificationManager.IMPORTANCE_DEFAULT);
             NotificationManager manager = requireActivity().getSystemService(NotificationManager.class);
