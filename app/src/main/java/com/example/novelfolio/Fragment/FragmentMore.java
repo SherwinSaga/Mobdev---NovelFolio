@@ -37,7 +37,7 @@ public class FragmentMore extends Fragment {
     private Switch switcher;
     private Switch notif;
     private boolean nightMode;
-    private TextView textView;
+
     private TextView details;
     private TextView Backup;
     static boolean isON;
@@ -55,7 +55,7 @@ public class FragmentMore extends Fragment {
         SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
         View view = inflater.inflate(R.layout.fragment_more, container, false);
 
-        textView = view.findViewById(R.id.tfThemes);
+
         details = view.findViewById(R.id.edit_details);
         Backup = view.findViewById(R.id.tfBackUP);
         switcher = view.findViewById(R.id.darkModeSwitch);
@@ -88,17 +88,6 @@ public class FragmentMore extends Fragment {
             }
         });
 
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragmentstheme = new FragmentThemes();
-                FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayout, fragmentstheme);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
-        });
 
         Backup.setOnClickListener(new View.OnClickListener() {
             @Override

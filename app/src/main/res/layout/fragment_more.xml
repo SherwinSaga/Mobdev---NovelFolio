@@ -67,23 +67,6 @@
 
             <TextView
                 style="@style/viewParent.headerText.settingsMiniTitle"
-                android:text="Customize"/>
-
-            <TextView
-                style="@style/viewParent.headerText.settingsTextIcon"
-                android:drawableLeft="@drawable/ic_edit_profile"
-                android:text="Edit Profile" />
-
-            <TextView
-                style="@style/viewParent.headerText.settingsTextIcon"
-                android:id="@+id/tfThemes"
-                android:drawableLeft="@drawable/ic_theme1"
-                android:layout_marginTop="12dp"
-                android:text="Change Theme"
-                />
-
-            <TextView
-                style="@style/viewParent.headerText.settingsMiniTitle"
                 android:text="Notifications"/>
 
             <Switch
@@ -99,23 +82,18 @@
 
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
-                android:drawableLeft="@drawable/ic_logout"
+                android:drawableLeft="@drawable/ic_languages"
                 android:text="BackUp and Restore"
                 android:id="@+id/tfBackUP"/>
 
             <TextView
                 style="@style/viewParent.headerText.settingsMiniTitle"
-                android:text="Regional"/>
-
-            <TextView
-                style="@style/viewParent.headerText.settingsTextIcon"
-                android:drawableLeft="@drawable/ic_languages"
-                android:text="Language" />
+                android:text="Account"/>
 
             <TextView
                 style="@style/viewParent.headerText.settingsTextIcon"
                 android:drawableLeft="@drawable/ic_logout"
-                android:text="Logout" />
+                android:text="Log out" />
 
 
 

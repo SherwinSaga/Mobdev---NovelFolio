@@ -6,15 +6,23 @@
         android:id="@+id/txtDec"
         android:icon="@drawable/ic_dec"
         android:title="Library"
-        app:iconTint="@color/black"
+        app:iconTint="@color/white"
         app:showAsAction="ifRoom" />
+
+
 
     <item
         android:id="@+id/txtInc"
         android:icon="@drawable/ic_inc"
         android:title="Browse"
-        app:iconTint="@color/black"
+        app:iconTint="@color/white"
         app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/toggle"
+        app:actionViewClass="android.widget.Switch"
+        app:showAsAction="ifRoom"
+        android:title="switch" />
 
 
 </menu>
