@@ -12,14 +12,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
+
 import com.example.novelfolio.Novel;
 import com.example.novelfolio.NovelCardAdapter;
 import com.example.novelfolio.R;
 import com.example.novelfolio.Synopsis;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -29,14 +31,31 @@ import java.util.List;
 public class FragmentLibrary extends Fragment implements NovelCardAdapter.NovelCardClickInterface {
     RecyclerView recyclerView;
     ArrayList<Novel> novels;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_library, container, false);
         recyclerView = view.findViewById(R.id.novelsList);
+        SearchView searchbar = view.findViewById(R.id.searchbar);
+        searchbar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Perform search when user submits the query
+                getNovels(query);
+                return true;
+            }
 
-        getNovels();
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Perform search as the text changes (optional)
+                getNovels(newText);
+                return true;
+            }
+        });
+
+        getNovels("");
         return view;
     }
 
@@ -49,8 +68,11 @@ public class FragmentLibrary extends Fragment implements NovelCardAdapter.NovelC
     }
 
 
-    public void getNovels() {
-        CollectionReference dbNovels = FirebaseFirestore.getInstance().collection("novels");
+    public void getNovels(String query) {
+        Query dbNovels = FirebaseFirestore.getInstance().collection("novels");
+        if (!query.isEmpty()) {
+            dbNovels = dbNovels.whereEqualTo("titleSearch", query.toLowerCase());
+        }
         dbNovels.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
