@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,30 +12,30 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.novelfolio.InFavorite;
 import com.example.novelfolio.Novel;
 import com.example.novelfolio.NovelCardAdapter;
-import com.example.novelfolio.NovelContent;
 import com.example.novelfolio.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCardClickInterface {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     RecyclerView recyclerView;
     ArrayList<Novel> novels;
+    NovelCardAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,16 +61,16 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
         HashMap<String, Object> favNovels = new HashMap<>();
         ArrayList<String> novelDocIds = new ArrayList<>();
         CollectionReference dbFavNovels = db.collection("users").document(uId).collection("favorites");
-        dbFavNovels.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        dbFavNovels.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                if (error == null) {
+                    ArrayList<String> novelDocIds = new ArrayList<>();
+                    for (QueryDocumentSnapshot document : value) {
                         String novelDocId = document.getId();
                         favNovels.put("novelDocId", novelDocId);
                         favNovels.put(novelDocId + " currChapterNum", document.getLong("currChapterNum").intValue());
                         novelDocIds.add(novelDocId);
-                        Toast.makeText(getContext(), Integer.toString(novelDocIds.size()), Toast.LENGTH_SHORT).show();
                     }
 
                     if (!novelDocIds.isEmpty()) {
@@ -84,11 +85,12 @@ public class FavoritesTab extends Fragment implements NovelCardAdapter.NovelCard
                                         novels.add(novel);
                                     }
                                     recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
-                                    NovelCardAdapter adapter = new NovelCardAdapter(getContext(), novels, FavoritesTab.this);
+                                    adapter = new NovelCardAdapter(getContext(), novels, FavoritesTab.this);
                                     recyclerView.setAdapter(adapter);
                                 }
                             }
                         });
+
                     }
                 }
             }

@@ -13,13 +13,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.example.novelfolio.InFavorite;
 import com.example.novelfolio.Novel;
 import com.example.novelfolio.NovelCardAdapter;
 import com.example.novelfolio.R;
 import com.example.novelfolio.Synopsis;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -61,17 +65,35 @@ public class FragmentLibrary extends Fragment implements NovelCardAdapter.NovelC
 
     @Override
     public void onNovelClick(String novelDocId, int chapterNum) {
-        Intent intent = new Intent(getActivity(), Synopsis.class);
-        intent.putExtra("novelDocId", novelDocId);
-        intent.putExtra("currentChapterNum", chapterNum);
-        startActivity(intent);
+        FirebaseFirestore.getInstance().collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("favorites").document(novelDocId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+
+                    if (document.exists()) {
+                        Intent intent = new Intent(getActivity(), InFavorite.class);
+                        intent.putExtra("novelDocId", novelDocId);
+                        intent.putExtra("currentChapterNum", chapterNum);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(getContext(), "HELLLOoo", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getActivity(), Synopsis.class);
+                        intent.putExtra("novelDocId", novelDocId);
+                        intent.putExtra("currentChapterNum", chapterNum);
+                        startActivity(intent);
+                    }
+                }
+            }
+        });
     }
 
 
     public void getNovels(String query) {
         Query dbNovels = FirebaseFirestore.getInstance().collection("novels");
         if (!query.isEmpty()) {
-            dbNovels = dbNovels.whereEqualTo("titleSearch", query.toLowerCase());
+            String queryLower = query.toLowerCase();
+            dbNovels = dbNovels.orderBy("titleSearch").startAt(queryLower).endAt(queryLower + "\uf8ff").limit(10);
         }
         dbNovels.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
