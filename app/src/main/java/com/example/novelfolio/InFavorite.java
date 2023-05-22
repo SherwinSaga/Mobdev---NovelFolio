@@ -53,14 +53,14 @@ public class InFavorite extends AppCompatActivity implements ChapterAdapter.Chap
         recyclerView = findViewById(R.id.novelDetailsChaptersList);
         @SuppressLint("MissingInflatedId") ImageButton remove = findViewById(R.id.removefromfav);
 
-        displayDetails(novelDocId);
-
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 removeFromFav(novelDocId);
             }
         });
+
+        displayDetails(novelDocId);
     }
 
     private void removeFromFav(String novelDocId) {
@@ -71,7 +71,6 @@ public class InFavorite extends AppCompatActivity implements ChapterAdapter.Chap
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(InFavorite.this, "Removed from favorites successfully", Toast.LENGTH_SHORT).show();
-                        // Document successfully deleted
                     }
                 });
     }

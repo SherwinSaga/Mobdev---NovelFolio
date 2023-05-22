@@ -39,6 +39,7 @@ public class NovelContent extends AppCompatActivity {
         String novelDocId = getIntent().getStringExtra("novelDocId");
         int currChapterNum = getIntent().getIntExtra("currentChapterNum", 1);
 
+        // TODO: update currChapterNum in db favorites
         contentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +57,8 @@ public class NovelContent extends AppCompatActivity {
                 intent.putExtra("novelDocId", novelDocId);
                 intent.putExtra("currentChapterNum",currChapterNum - 1);
                 startActivity(intent);
+                finish();
+
             }
         });
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -65,6 +68,7 @@ public class NovelContent extends AppCompatActivity {
                 intent.putExtra("novelDocId", novelDocId);
                 intent.putExtra("currentChapterNum",currChapterNum + 1);
                 startActivity(intent);
+                finish();
             }
         });
         if (currChapterNum <= 1) {
