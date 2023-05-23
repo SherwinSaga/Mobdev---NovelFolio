@@ -15,12 +15,16 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import yuku.ambilwarna.AmbilWarnaDialog;
+
+import java.util.HashMap;
 
 public class NovelContent extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -46,7 +50,11 @@ public class NovelContent extends AppCompatActivity {
         String novelDocId = getIntent().getStringExtra("novelDocId");
         int currChapterNum = getIntent().getIntExtra("currentChapterNum", 1);
 
-        // TODO: update currChapterNum in db favorites
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put("currChapterNum", currChapterNum);
+        db.collection("users").document(user.getUid()).collection("favorites").document(novelDocId).update(updates);
+
         contentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -52,6 +52,7 @@ public class InFavorite extends AppCompatActivity implements ChapterAdapter.Chap
         synopsis = findViewById(R.id.novelDetailsSynopsis);
         recyclerView = findViewById(R.id.novelDetailsChaptersList);
         @SuppressLint("MissingInflatedId") ImageButton remove = findViewById(R.id.removefromfav);
+        ImageButton btnContinuePrevChap = findViewById(R.id.btnContinuePrevChapter);
 
         remove.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +61,18 @@ public class InFavorite extends AppCompatActivity implements ChapterAdapter.Chap
             }
         });
 
+        btnContinuePrevChap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseUser user = mb.getCurrentUser();
+                db.collection("users").document(user.getUid()).collection("favorites").document(novelDocId).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        onChapterClick(novelDocId, task.getResult().getLong("currChapterNum").intValue());
+                    }
+                });
+            }
+        });
         displayDetails(novelDocId);
     }
 
