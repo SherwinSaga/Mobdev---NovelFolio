@@ -77,7 +77,7 @@ public class FragmentLibrary extends Fragment implements NovelCardAdapter.NovelC
                         intent.putExtra("currentChapterNum", chapterNum);
                         startActivity(intent);
                     } else {
-                        Toast.makeText(getContext(), "HELLLOoo", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "HELLLOoo", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getActivity(), Synopsis.class);
                         intent.putExtra("novelDocId", novelDocId);
                         intent.putExtra("currentChapterNum", chapterNum);

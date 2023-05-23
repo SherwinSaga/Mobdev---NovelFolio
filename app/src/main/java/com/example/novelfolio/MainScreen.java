@@ -14,16 +14,12 @@ import com.example.novelfolio.Fragment.FragmentForum;
 import com.example.novelfolio.Fragment.FragmentHome;
 import com.example.novelfolio.Fragment.FragmentLibrary;
 import com.example.novelfolio.Fragment.FragmentMore;
-import com.example.novelfolio.Fragment.ViewPagerAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainScreen extends AppCompatActivity {
 
-    TabLayout tabLayout;
-    ViewPager2 viewPager2;
-    ViewPagerAdapter viewPagerAdapter;
     BottomNavigationView bottomNavigationView;
     FrameLayout frameLayout;
 
@@ -32,79 +28,44 @@ public class MainScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_screen);
 
-        tabLayout = findViewById(R.id.tab_layout);
-        viewPager2 = findViewById(R.id.viewPager);
-        viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager2.setAdapter(viewPagerAdapter);
+
+
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         frameLayout = findViewById(R.id.frameLayout);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                viewPager2.setVisibility(View.VISIBLE);
-                frameLayout.setVisibility(View.GONE);
-                viewPager2.setCurrentItem(tab.getPosition());
-            }
 
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
 
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-                viewPager2.setVisibility(View.VISIBLE);
-                frameLayout.setVisibility(View.GONE);
-
-            }
-        });
-
-        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                switch(position){
-                    case 0:
-                    case 1:
-                        tabLayout.getTabAt(position).select();
-                }
-                super.onPageSelected(position);
-            }
-        });
 
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 frameLayout.setVisibility(View.VISIBLE);
-                viewPager2.setVisibility(View.GONE);
+
                 switch(item.getItemId()){
                     case R.id.bot_home:
-
-                        tabLayout.setVisibility(View.VISIBLE);
-                        tabLayout.selectTab(tabLayout.getTabAt(0)); // kani na line // this shit works
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new FragmentHome()).commit();
                         return true;
 
                     case R.id.bot_library:
-                        viewPager2.setVisibility(View.GONE);
-                        tabLayout.setVisibility(View.GONE);
+
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new FragmentLibrary()).commit();
                         return true;
 
                     case R.id.bot_forum:
-                        viewPager2.setVisibility(View.GONE);
-                        tabLayout.setVisibility(View.GONE);
+
+
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new FragmentForum()).commit();
                         return true;
 
                     case R.id.bot_more:
-                        viewPager2.setVisibility(View.GONE);
-                        tabLayout.setVisibility(View.GONE);
+
+
                         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new FragmentMore()).commit();
                         return true;
                 }
                 return false;
             }
         });
+        bottomNavigationView.setSelectedItemId(R.id.bot_home);
     }
 }
