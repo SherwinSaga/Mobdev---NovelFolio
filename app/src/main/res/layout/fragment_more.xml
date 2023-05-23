@@ -30,7 +30,7 @@
                     android:id="@+id/profileCircleImageView"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/ic_user"
+                    android:src="@drawable/ic_user1"
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="10dp"/>
 
@@ -39,7 +39,7 @@
                     style="@style/viewParent.headerText"
                     android:layout_marginTop="20dp"
                     android:layout_toRightOf="@id/profileCircleImageView"
-                    android:text="Jhudiel Munoz"
+                    android:text=""
                     android:textSize="18sp" />
 
                 <TextView
@@ -48,7 +48,6 @@
                     android:layout_below="@id/moreUserName"
                     android:layout_toRightOf="@id/profileCircleImageView"
                     android:text="Edit personal details"
-                    android:textColor="#5D5C5C"
                     android:textSize="16sp" />
 
                 <ImageView

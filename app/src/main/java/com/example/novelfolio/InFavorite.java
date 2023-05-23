@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -52,7 +53,7 @@ public class InFavorite extends AppCompatActivity implements ChapterAdapter.Chap
         synopsis = findViewById(R.id.novelDetailsSynopsis);
         recyclerView = findViewById(R.id.novelDetailsChaptersList);
         @SuppressLint("MissingInflatedId") ImageButton remove = findViewById(R.id.removefromfav);
-        ImageButton btnContinuePrevChap = findViewById(R.id.btnContinuePrevChapter);
+        Button btnContinuePrevChap = findViewById(R.id.btncontinue);
 
         remove.setOnClickListener(new View.OnClickListener() {
             @Override

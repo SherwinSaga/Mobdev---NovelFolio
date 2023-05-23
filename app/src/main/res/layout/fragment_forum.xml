@@ -6,10 +6,146 @@
     tools:context=".Fragment.FragmentForum">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="make a notification"
-        android:id="@+id/notif"/>
+        android:orientation="vertical"
+        android:padding="30dp">
+
+    <TextView
+        style="@style/viewParent.headerText"
+        android:text="Updates" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\nToday"/>
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="Solo Levelling"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 2 - Test"/>
+
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="Youjo Senki"
+           />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 3 - Operation Orb"/>
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="Youjo Senki"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 2 - The Sky In Norden"/>
+
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="The Beginning After The End"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 6 - Misfortune"/>
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="The Beginning After The End"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 5 - The beginning"/>
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="The Beginning After The End"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 4 - My Family"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\nYesterday"/>
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="Alderamin On The Sky"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 4 - Katjvanmaninik's Watchdogs"/>
+
+        <TextView
+            style="@style/viewParent.headerText.update"
+            android:drawableLeft="@drawable/ic_new"
+            android:text="Alderamin On The Sky"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="10sp"
+            android:layout_marginLeft="45dp"
+            android:text="Chapter 3 - All Quiet On the Eastern Front"/>
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:layout_marginBottom="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="635dp"
+        android:text="notify"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/notif"
+        android:layout_marginLeft="300dp"/>
+
 
 </FrameLayout>

@@ -83,6 +83,11 @@
         <item name="android:gravity">center_vertical</item>
         <item name="android:drawablePadding">20dp</item>
     </style>
+
+    <style name="viewParent.headerText.update" parent="settingsText">
+
+    </style>
+
     <style name="viewParent.headerText.settingsTextIcon" parent="settingsText">
         <item name="android:drawableRight">@drawable/ic_more</item>
     </style>
