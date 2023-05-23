@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.novelfolio.Fragment.NovelNotesFragment;
@@ -26,6 +29,9 @@ public class ViewNotes extends AppCompatActivity {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     TextView title;
     TextView content;
+    String dbTitle;
+    String dbContent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -34,7 +40,21 @@ public class ViewNotes extends AppCompatActivity {
         title = findViewById(R.id.viewNoteTitle);
         content = findViewById(R.id.viewNoteContent);
         String docId = getIntent().getStringExtra("docId");
+        String novelDocId = getIntent().getStringExtra("novelDocId");
+        Button btnEdit = findViewById(R.id.btnEditNote);
 
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewNotes.this, AddNoteTemplate.class);
+                intent.putExtra("title", dbTitle);
+                intent.putExtra("content", dbContent);
+                intent.putExtra("docId", docId);
+                intent.putExtra("novelDocId", novelDocId);
+                startActivity(intent);
+                finish();
+            }
+        });
         getNote(docId);
     }
 
@@ -47,8 +67,10 @@ public class ViewNotes extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
-                        title.setText("Title : "+document.getString("title").toString());
-                        content.setText(document.getString("content").toString());
+                        dbTitle = document.getString("title");
+                        dbContent = document.getString("content");
+                        title.setText("Title : "+ dbTitle);
+                        content.setText(dbContent);
                     }
                 } else {
                     Log.w("MainAct", "Error getting documents.", task.getException());

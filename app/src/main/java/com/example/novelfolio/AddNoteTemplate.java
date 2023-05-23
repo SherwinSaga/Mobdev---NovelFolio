@@ -10,10 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.novelfolio.Fragment.NovelNotesFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class AddNoteTemplate extends AppCompatActivity {
 
@@ -26,18 +27,32 @@ public class AddNoteTemplate extends AppCompatActivity {
         EditText title = findViewById(R.id.addNoteTitle);
         EditText content = findViewById(R.id.addNoteContent);
         String novelDocId = getIntent().getStringExtra("novelDocId");
-
+        String docId = getIntent().getStringExtra("docId");
+        title.setText(getIntent().getStringExtra("title"));
+        content.setText(getIntent().getStringExtra("content"));
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createNovelNote(novelDocId, title.getText().toString(), content.getText().toString());
-
+                if (docId != null) {
+                    updateNovelNote(docId,title.getText().toString(), content.getText().toString());
+                } else {
+                    createNovelNote(novelDocId, title.getText().toString(), content.getText().toString());
+                }
                 Intent intent = new Intent(AddNoteTemplate.this, NovelContents.class);
                 intent.putExtra("novelDocId", novelDocId);
                 intent.putExtra("tabNum", 1);
                 startActivity(intent);
+                finish();
             }
         });
+    }
+    public void updateNovelNote(String docId, String title, String content) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser authUser = FirebaseAuth.getInstance().getCurrentUser();
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put("title", title);
+        updates.put("content", content);
+        db.collection("users").document(authUser.getUid()).collection("notes").document(docId).update(updates);
     }
 
     public void createNovelNote(String novelDocId, String title, String content) {

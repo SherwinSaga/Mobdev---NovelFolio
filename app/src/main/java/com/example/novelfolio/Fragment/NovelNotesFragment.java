@@ -36,11 +36,13 @@ public class NovelNotesFragment extends Fragment implements NoteAdapter.NoteClic
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     RecyclerView recyclerView;
     ArrayList<Note> notes;
+    String novelDocId;
 
     @Override
     public void onNoteClick(String docId) {
         Intent intent = new Intent(getContext(), ViewNotes.class);
         intent.putExtra("docId", docId);
+        intent.putExtra("novelDocId", novelDocId);
         startActivity(intent);
     }
 
@@ -53,7 +55,7 @@ public class NovelNotesFragment extends Fragment implements NoteAdapter.NoteClic
         recyclerView = view.findViewById(R.id.listNovelNotes);
         Bundle bundle = getArguments();
 
-        String novelDocId = bundle.getString("novelDocId");
+        novelDocId = bundle.getString("novelDocId");
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
