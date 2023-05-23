@@ -20,6 +20,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import yuku.ambilwarna.AmbilWarnaDialog;
+
 public class NovelContent extends AppCompatActivity {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private TextView chapterTitle;
@@ -27,6 +29,7 @@ public class NovelContent extends AppCompatActivity {
     private Button prevButton;
     private Button nextButton;
     private Button contentButton;
+    private  int defaultColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class NovelContent extends AppCompatActivity {
         chapterContent = findViewById(R.id.chapterContent);
         prevButton = findViewById(R.id.prevButton);
         nextButton = findViewById(R.id.nextButton);
+        defaultColor = chapterTitle.getCurrentTextColor();
 
         contentButton = findViewById(R.id.btnContents);
 
@@ -127,6 +131,8 @@ public class NovelContent extends AppCompatActivity {
             case R.id.txtDec:
                 decreaseFontSize();
                 return true;
+            case R.id.txtcolor:
+                openColorPicker();
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -142,5 +148,22 @@ public class NovelContent extends AppCompatActivity {
         float currentSize = chapterTitle.getTextSize() / getResources().getDisplayMetrics().scaledDensity;
         chapterTitle.setTextSize(currentSize - 1);
         chapterContent.setTextSize(currentSize - 1);
+    }
+
+    private void openColorPicker(){
+        AmbilWarnaDialog ambilWarnaDialog = new AmbilWarnaDialog(this, defaultColor, new AmbilWarnaDialog.OnAmbilWarnaListener() {
+            @Override
+            public void onCancel(AmbilWarnaDialog dialog) {
+
+            }
+
+            @Override
+            public void onOk(AmbilWarnaDialog dialog, int color) {
+                defaultColor = color;
+                chapterContent.setTextColor(defaultColor);
+                chapterTitle.setTextColor(defaultColor);
+            }
+        });
+        ambilWarnaDialog.show();
     }
 }

@@ -19,10 +19,12 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/toggle"
-        app:actionViewClass="android.widget.Switch"
-        app:showAsAction="ifRoom"
-        android:title="switch" />
+        android:id="@+id/txtcolor"
+        android:icon="@drawable/ic_col"
+        android:title="Browse"
+        app:iconTint="@color/white"
+        app:showAsAction="ifRoom"/>
+
 
 
 </menu>
