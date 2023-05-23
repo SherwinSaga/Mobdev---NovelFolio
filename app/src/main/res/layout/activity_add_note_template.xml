@@ -40,8 +40,9 @@
                 android:background="@color/gray"
                 android:id="@+id/addNoteContent"
                 android:textSize="@dimen/newsMoreTextSize"
-                android:layout_height="500dp"
-                android:layout_width="match_parent"/>
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:inputType="textMultiLine"/>
         </com.google.android.material.textfield.TextInputLayout>
 
 
