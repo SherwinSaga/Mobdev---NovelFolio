@@ -19,15 +19,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/loginViewsMargin">
+
             <EditText
-                android:background="@color/gray"
+
+                android:textColor="@color/black"
                 android:id="@+id/addNoteTitle"
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:textSize="@dimen/newsMoreTextSize"
+                android:layout_height="match_parent"
+                android:background="@drawable/note_color2"
+                android:hint="Title"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
-                android:hint="Title"  />
+                android:textSize="@dimen/newsMoreTextSize" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -37,7 +40,8 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <EditText
-                android:background="@color/gray"
+                android:textColor="@color/black"
+                android:background="@drawable/note_color2"
                 android:id="@+id/addNoteContent"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:layout_height="wrap_content"
