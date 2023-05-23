@@ -38,10 +38,6 @@ public class AddNoteTemplate extends AppCompatActivity {
                 } else {
                     createNovelNote(novelDocId, title.getText().toString(), content.getText().toString());
                 }
-                Intent intent = new Intent(AddNoteTemplate.this, NovelContents.class);
-                intent.putExtra("novelDocId", novelDocId);
-                intent.putExtra("tabNum", 1);
-                startActivity(intent);
                 finish();
             }
         });
