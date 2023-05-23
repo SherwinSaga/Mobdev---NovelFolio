@@ -28,6 +28,7 @@ public class ViewNotes extends AppCompatActivity {
     TextView content;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
         title = findViewById(R.id.viewNoteTitle);

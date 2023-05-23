@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/loginViewsMargin">
             <EditText
+                android:background="@color/gray"
                 android:id="@+id/addNoteTitle"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
@@ -36,6 +37,7 @@
             android:layout_marginTop="@dimen/loginViewsMargin">
 
             <EditText
+                android:background="@color/gray"
                 android:id="@+id/addNoteContent"
                 android:textSize="@dimen/newsMoreTextSize"
                 android:layout_height="500dp"

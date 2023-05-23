@@ -37,6 +37,7 @@ public class NovelContent extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novel_content);
         chapterTitle = findViewById(R.id.chaptertitle);
