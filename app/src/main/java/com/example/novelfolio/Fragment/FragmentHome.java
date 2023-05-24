@@ -64,7 +64,6 @@ public class FragmentHome extends Fragment implements NovelCardAdapter.NovelCard
     public void getNovels() {
         String uId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         HashMap<String, Object> favNovels = new HashMap<>();
-        ArrayList<String> novelDocIds = new ArrayList<>();
         CollectionReference dbFavNovels = db.collection("users").document(uId).collection("favorites");
         dbFavNovels.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
@@ -95,7 +94,11 @@ public class FragmentHome extends Fragment implements NovelCardAdapter.NovelCard
                                 }
                             }
                         });
-
+                    }else {
+                        novels = new ArrayList<>();
+                        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3, GridLayoutManager.VERTICAL, false));
+                        adapter = new NovelCardAdapter(getContext(), novels, FragmentHome.this);
+                        recyclerView.setAdapter(adapter);
                     }
                 }
             }
