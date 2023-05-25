@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                                     Toast.makeText(MainActivity.this, "Sign-in successful", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(MainActivity.this, MainScreen.class);
                                     startActivity(intent);
-                                    // Proceed with your desired logic
+                                    // Proceed with your desired logic asd
                                 } else {
                                     // Sign-in failed
                                     Toast.makeText(MainActivity.this, "Sign-in failed", Toast.LENGTH_SHORT).show();
